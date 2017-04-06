@@ -32,9 +32,11 @@
 
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
+;; change default mode
 ;;(cua-mode 1)
 (which-function-mode 1)
 (recentf-mode 1)
+(delete-selection-mode 1)
 (global-set-key "\C-xf" 'recentf-open-files)
 
 (require 'gtags)
