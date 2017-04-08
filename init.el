@@ -1,3 +1,7 @@
+;; add package
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,7 +34,7 @@
 (setq c-default-style "linux"
           c-basic-offset 2)
 
-(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
+;;(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
 ;; change default mode
 ;;(cua-mode 1)
@@ -53,6 +57,35 @@
 (global-set-key (kbd "C-<down>")  'windmove-down)
 
 (global-set-key "\C-q" 'toggle-truncate-lines)
+
+;; base copy fucntion
+(defun get-point (symbol &optional arg)
+  "get the point"
+  (funcall symbol arg)
+  (point)
+  )
+
+(defun copy-thing (begin-of-thing end-of-thing &optional arg)
+  "copy thing between beg & end into kill ring"
+  (save-excursion
+    (let ((beg (get-point begin-of-thing 1))
+	  (end (get-point end-of-thing arg)))
+      (copy-region-as-kill beg end)))
+  )
+
+(defun paste-to-mark(&optional arg)
+  "Paste things to mark, or to the prompt in shell-mode"
+  (let ((pasteMe 
+     	 (lambda()
+     	   (if (string= "shell-mode" major-mode)
+	       (progn (comint-next-prompt 25535) (yank))
+	     (progn (goto-char (mark)) (yank) )))))
+    (if arg
+	(if (= arg 1)
+	    nil
+	  (funcall pasteMe))
+      (funcall pasteMe))
+    ))
 
 ;;copy word
 (defun copy-word (&optional arg)
