@@ -178,3 +178,8 @@
   ;;(paste-to-mark arg)
   )
 (global-set-key (kbd "C-c w") 'thing-copy-group_word)
+
+;;enable CUA-MODE
+(cua-mode t)
+(setq cua-enable-cua-keys nil) ; デフォルトキーバインドを無効化
+(define-key global-map (kbd "C-x SPC") 'cua-set-rectangle-mark)
