@@ -1,3 +1,10 @@
+;; Setting PATH ENV
+(setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
+(setq exec-path (append exec-path '("/opt/local/bin")))
+
+(setenv "SHELL" "/bin/bash")
+(setq explicit-shell-file-name "/bin/bash")
+
 ;; add package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -16,7 +23,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
 
 (global-set-key "\C-f" 'compile)
 (global-set-key "\C-h" 'dired-up-directory)
