@@ -16,7 +16,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes (quote (tango-dark))))
+ '(custom-enabled-themes (quote (wheatgrass))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -166,14 +166,14 @@
 ;; copy group word
 (defun beginning-of-group_word(&optional arg)
   "  "
-  (re-search-backward "[ )(]" (line-beginning-position) 3 1)
-  (if (looking-at "[)( ]")  (goto-char (+ (point) 1)) )
+  (re-search-backward "[ .;)(]" (line-beginning-position) 3 1)
+  (if (looking-at "[.;)( ]")  (goto-char (+ (point) 1)) )
   )
 
 (defun end-of-group_word(&optional arg)
   " "
-  (re-search-forward "[ )(]" (line-end-position) 3 arg)
-  (if (looking-back "[)( ]") (goto-char (- (point) 1)) )
+  (re-search-forward "[ .;)(]" (line-end-position) 3 arg)
+  (if (looking-back "[.;)( ]") (goto-char (- (point) 1)) )
   )
 
 (defun thing-copy-group_word(&optional arg)
