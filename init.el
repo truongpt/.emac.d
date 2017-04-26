@@ -1,3 +1,25 @@
+;; proxy
+;;(setq url-proxy-services '(("http" . "pac.mei.co.jp/proxy.pac:80")))
+
+;;(load-file "~/.emacs.d/elpa/setup-cygwin.el")
+;;(load-file "~/.emacs.d/elpa/gtags-el/gtags.el")
+(load-file "~/.emacs.d/elpa/csharp-mode/csharp-mode.el")
+;;(require 'csharp-mode)
+;;(csharp-mode 1)
+;; Setting PATH ENV
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+;;(setenv "PATH" (concat (getenv "PATH") ":/bin"))
+;;(setq exec-path (append exec-path '("/bin")))
+
+;;(setenv "SHELL" "/bin/bash")
+;;(setq explicit-shell-file-name "/bin/bash")
+
 ;; add package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -16,7 +38,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
 
 (global-set-key "\C-f" 'compile)
 (global-set-key "\C-h" 'dired-up-directory)
@@ -183,3 +204,7 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil) ; デフォルトキーバインドを無効化
 (define-key global-map (kbd "C-x SPC") 'cua-set-rectangle-mark)
+
+;;open file/folder from dired mode
+(defun w32-browser (doc) (w32-shell-execute 1 doc))
+(eval-after-load "dired" '(define-key dired-mode-map "\z" (lambda () (interactive) (w32-browser (dired-replace-in-string "/" "\\" (dired-get-filename))))))
