@@ -19,6 +19,7 @@
 
 ;;(setenv "SHELL" "/bin/bash")
 ;;(setq explicit-shell-file-name "/bin/bash")
+;; Setting PATH ENV
 
 ;; add package
 (require 'package)
