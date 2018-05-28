@@ -18,7 +18,7 @@
 ;;(setenv "PATH" (concat (getenv "PATH") ":/bin"))
 ;;(setq exec-path (append exec-path '("/bin")))
 ;;(setenv "PATH" "c:\\cygwin64\\bin")
-;;(setenv "PATH" (format "c:\\cygwin64\\bin;%s" (getenv "PATH")))
+(setenv "PATH" (format "c:\\cygwin64\\bin;%s" (getenv "PATH")))
 ;;(setq find-dired-find-program "c:\\cygwin64\\bin\\find.exe")
 ;;(setq find-program "c:\\cygwin64\\bin\\find.exe")
 
