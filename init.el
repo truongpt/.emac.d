@@ -6,7 +6,7 @@
 (load-file "~/.emacs.d/elpa/csharp-mode/csharp-mode.el")
 ;;(require 'csharp-mode)
 ;;(csharp-mode 1)
-;; Setting PATH ENV
+
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -14,8 +14,13 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Setting PATH ENV
 ;;(setenv "PATH" (concat (getenv "PATH") ":/bin"))
 ;;(setq exec-path (append exec-path '("/bin")))
+;;(setenv "PATH" "c:\\cygwin64\\bin")
+;;(setenv "PATH" (format "c:\\cygwin64\\bin;%s" (getenv "PATH")))
+;;(setq find-dired-find-program "c:\\cygwin64\\bin\\find.exe")
+;;(setq find-program "c:\\cygwin64\\bin\\find.exe")
 
 ;;(setenv "SHELL" "/bin/bash")
 ;;(setq explicit-shell-file-name "/bin/bash")
@@ -45,6 +50,10 @@
 (global-set-key "\C-h" 'dired-up-directory)
 (global-set-key "\C-z" 'grep-find)
 (global-set-key "\C-b" 'revert-buffer)
+
+(global-set-key "\C-i" 'forward-word)
+(global-set-key "\C-u" 'backward-word)
+
 
 ;; tab size
 
@@ -210,3 +219,19 @@
 ;;open file/folder from dired mode
 (defun w32-browser (doc) (w32-shell-execute 1 doc))
 (eval-after-load "dired" '(define-key dired-mode-map "\z" (lambda () (interactive) (w32-browser (dired-replace-in-string "/" "\\" (dired-get-filename))))))
+
+;; remove tool bar
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
+(unless (and (eq system-type 'darwin) (display-graphic-p))
+  (when (fboundp 'menu-bar-mode)
+    (menu-bar-mode -1)))
+
+;; turn off cursor blink
+(when (fboundp 'blink-cursor-mode)
+  (blink-cursor-mode -1))
+
+;; turn off beep
+(setq ring-bell-function 'ignore)
