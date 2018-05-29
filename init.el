@@ -235,3 +235,6 @@
 
 ;; turn off beep
 (setq ring-bell-function 'ignore)
+
+;; keep current buffer for M-x shell
+(push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
