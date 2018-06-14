@@ -15,7 +15,7 @@
 (package-initialize)
 
 ;; Setting PATH ENV
-;;(setenv "PATH" (concat (getenv "PATH") ":/bin"))
+(setenv "PATH" (concat (getenv "PATH") ":/bin"))
 ;;(setq exec-path (append exec-path '("/bin")))
 ;;(setenv "PATH" "c:\\cygwin64\\bin")
 (setenv "PATH" (format "c:\\cygwin64\\bin;%s" (getenv "PATH")))
@@ -26,6 +26,9 @@
 ;;(setq explicit-shell-file-name "/bin/bash")
 ;; Setting PATH ENV
 
+;;set relative path
+(setq gtags-path-style 'relative)
+
 ;; add package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -35,10 +38,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(cua-mode t nil (cua-base))
- '(custom-enabled-themes (quote (wheatgrass))))
+ '(custom-enabled-themes (quote (deeper-blue))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
