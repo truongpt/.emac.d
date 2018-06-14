@@ -85,8 +85,7 @@
 (global-set-key "\M-r" 'gtags-find-rtag)
 (global-set-key "\M-s" 'gtags-find-symbol)
 (global-set-key "\C-t" 'gtags-pop-stack)
-
-(set-face-attribute 'default nil :height 100)
+(global-set-key "\M-z" 'gtags-find-symbol)
 
 (global-set-key (kbd "C-<left>")  'windmove-left)
 (global-set-key (kbd "C-<right>") 'windmove-right)
@@ -94,6 +93,8 @@
 (global-set-key (kbd "C-<down>")  'windmove-down)
 
 (global-set-key "\C-q" 'toggle-truncate-lines)
+
+(set-face-attribute 'default nil :height 100)
 
 ;; base copy fucntion
 (defun get-point (symbol &optional arg)
@@ -240,3 +241,10 @@
 
 ;; turn off beep
 (setq ring-bell-function 'ignore)
+
+;; keep current buffer for M-x shell
+(push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
+
+;;scroll
+(global-set-key (kbd "M-<up>") (lambda () (interactive) (scroll-down 1)))
+(global-set-key (kbd "M-<down>") (lambda () (interactive) (scroll-up 1)))
