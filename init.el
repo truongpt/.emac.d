@@ -248,3 +248,6 @@
 ;;scroll
 (global-set-key (kbd "M-<up>") (lambda () (interactive) (scroll-down 1)))
 (global-set-key (kbd "M-<down>") (lambda () (interactive) (scroll-up 1)))
+
+(global-set-key (kbd "M-S-<up>") (lambda () (interactive) (scroll-down 5)))
+(global-set-key (kbd "M-S-<down>") (lambda () (interactive) (scroll-up 5)))
