@@ -80,6 +80,8 @@
 (delete-selection-mode 1)
 ;; display line number
 (global-linum-mode 1)
+;;high light line
+(global-hl-line-mode 1)
 
 (require 'gtags)
 (global-set-key "\M-t" 'gtags-find-tag)
