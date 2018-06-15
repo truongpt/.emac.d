@@ -78,7 +78,8 @@
 (which-function-mode 1)
 (recentf-mode 1)
 (delete-selection-mode 1)
-(global-set-key "\C-xf" 'recentf-open-files)
+;; display line number
+(global-linum-mode 1)
 
 (require 'gtags)
 (global-set-key "\M-t" 'gtags-find-tag)
@@ -87,11 +88,13 @@
 (global-set-key "\C-t" 'gtags-pop-stack)
 (global-set-key "\M-z" 'gtags-find-symbol)
 
+;;utility kbd
 (global-set-key (kbd "C-<left>")  'windmove-left)
 (global-set-key (kbd "C-<right>") 'windmove-right)
 (global-set-key (kbd "C-<up>")    'windmove-up)
 (global-set-key (kbd "C-<down>")  'windmove-down)
 
+(global-set-key "\C-xf" 'recentf-open-files)
 (global-set-key "\C-q" 'toggle-truncate-lines)
 
 (set-face-attribute 'default nil :height 100)
