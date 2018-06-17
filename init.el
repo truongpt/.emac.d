@@ -29,27 +29,14 @@
 ;;set relative path
 (setq gtags-path-style 'relative)
 
-;; add package
+;;add package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(cua-mode t nil (cua-base))
- '(custom-enabled-themes (quote (deeper-blue))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
+;; setting theme, font
+(load-theme 'deeper-blue)
+;;(set-face-attribute 'default nil :family "Consolas" :height 110)
+
 
 (global-set-key "\C-f" 'compile)
 (global-set-key "\C-h" 'dired-up-directory)
