@@ -1,9 +1,5 @@
 
 ;;(load-file "~/.emacs.d/elpa/setup-cygwin.el")
-(load-file "~/.emacs.d/elpa/gtags-el/gtags.el")
-(load-file "~/.emacs.d/elpa/csharp-mode/csharp-mode.el")
-;;(require 'csharp-mode)
-;;(csharp-mode 1)
 
 ;;add package
 (require 'package)
@@ -53,10 +49,10 @@
 ;; High light line
 (global-hl-line-mode 1)
 
-;; set relative path
-(setq gtags-path-style 'relative)
-
+;; Gtags
+(load-file "~/.emacs.d/elpa/gtags-el/gtags.el")
 (require 'gtags)
+(setq gtags-path-style 'relative)
 (global-set-key "\M-t" 'gtags-find-tag)
 (global-set-key "\M-r" 'gtags-find-rtag)
 (global-set-key "\M-s" 'gtags-find-symbol)
