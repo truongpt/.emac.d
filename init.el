@@ -235,3 +235,10 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-smart-open t)
+
+;; Auto-complete
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
+(require 'auto-complete)
+(setq auto-complete-mode t)
+
+
