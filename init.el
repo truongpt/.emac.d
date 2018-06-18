@@ -1,5 +1,3 @@
-;; proxy
-;;(setq url-proxy-services '(("http" . "pac.mei.co.jp/proxy.pac:80")))
 
 ;;(load-file "~/.emacs.d/elpa/setup-cygwin.el")
 (load-file "~/.emacs.d/elpa/gtags-el/gtags.el")
@@ -7,11 +5,9 @@
 ;;(require 'csharp-mode)
 ;;(csharp-mode 1)
 
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;;add package
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
 ;; Setting PATH ENV
@@ -26,13 +22,6 @@
 ;;(setq explicit-shell-file-name "/bin/bash")
 ;; Setting PATH ENV
 
-;;set relative path
-(setq gtags-path-style 'relative)
-
-;;add package
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
 ;; setting theme, font
 (load-theme 'deeper-blue)
 
@@ -40,39 +29,32 @@
   (set-face-attribute 'default nil :family "Consolas" :height 110)
 )
 
-
-
 (global-set-key "\C-f" 'compile)
 (global-set-key "\C-h" 'dired-up-directory)
 (global-set-key "\C-z" 'grep-find)
 (global-set-key "\C-b" 'revert-buffer)
-
 (global-set-key "\C-i" 'forward-word)
 (global-set-key "\C-u" 'backward-word)
 
-
-;; tab size
-
-;;(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
-;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-;;(setq-default tab-width 2)
-;;(setq-default indent-tabs-mode nil)
 
 (setq-default c-basic-offset 2)
 (setq c-default-style "linux"
           c-basic-offset 2)
 
-;;(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
-;; change default mode
+;; Change default mode
 ;;(cua-mode 1)
 (which-function-mode 1)
 (recentf-mode 1)
 (delete-selection-mode 1)
-;; display line number
+;; Display line number
 (global-linum-mode 1)
-;;high light line
+
+;; High light line
 (global-hl-line-mode 1)
+
+;; set relative path
+(setq gtags-path-style 'relative)
 
 (require 'gtags)
 (global-set-key "\M-t" 'gtags-find-tag)
