@@ -35,7 +35,11 @@
 
 ;; setting theme, font
 (load-theme 'deeper-blue)
-;;(set-face-attribute 'default nil :family "Consolas" :height 110)
+
+(if (eq system-type 'windows-nt)
+  (set-face-attribute 'default nil :family "Consolas" :height 110)
+)
+
 
 
 (global-set-key "\C-f" 'compile)
