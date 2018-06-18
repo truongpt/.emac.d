@@ -229,3 +229,9 @@
 
 (global-set-key (kbd "M-S-<up>") (lambda () (interactive) (scroll-down 5)))
 (global-set-key (kbd "M-S-<down>") (lambda () (interactive) (scroll-up 5)))
+
+;; NeoTree
+(add-to-list 'load-path "~/.emacs.d/elpa/neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
