@@ -233,7 +233,7 @@
 (setq neo-smart-open t)
 
 ;; Auto-complete
-(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-local")
 (require 'auto-complete)
 (setq auto-complete-mode t)
 
