@@ -19,7 +19,8 @@
 ;; Setting PATH ENV
 
 ;; setting theme, font
-(load-theme 'deeper-blue)
+;;(load-theme 'deeper-blue)
+(load-theme 'tango-dark)
 
 (if (eq system-type 'windows-nt)
   (set-face-attribute 'default nil :family "Consolas" :height 110)
@@ -237,4 +238,25 @@
 (require 'auto-complete)
 (setq auto-complete-mode t)
 
+;; Use counsel
+(require 'counsel)
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key (kbd "M-s") 'swiper)
+(global-set-key (kbd "C-x m") 'counsel-M-x)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-x l") 'counsel-locate)
+(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
