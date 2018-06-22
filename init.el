@@ -26,17 +26,10 @@
   (set-face-attribute 'default nil :family "Consolas" :height 110)
 )
 
-(global-set-key "\C-f" 'compile)
-(global-set-key "\C-h" 'dired-up-directory)
-(global-set-key "\C-z" 'grep-find)
-(global-set-key "\C-b" 'revert-buffer)
-(global-set-key "\C-i" 'forward-word)
-(global-set-key "\C-u" 'backward-word)
-
-
-(setq-default c-basic-offset 2)
+;; Indentation
+(setq-default c-basic-offset 4)
 (setq c-default-style "linux"
-          c-basic-offset 2)
+          c-basic-offset 4)
 
 
 ;; Change default mode
@@ -59,6 +52,12 @@
 (global-set-key "\M-s" 'gtags-find-symbol)
 (global-set-key "\C-t" 'gtags-pop-stack)
 (global-set-key "\M-z" 'gtags-find-symbol)
+
+;; utility
+(global-set-key "\C-h" 'dired-up-directory)
+(global-set-key "\C-z" 'grep-find)
+(global-set-key "\C-i" 'forward-word)
+(global-set-key "\C-u" 'backward-word)
 
 ;;utility kbd
 (global-set-key (kbd "C-<left>")  'windmove-left)
