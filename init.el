@@ -230,6 +230,20 @@
 (global-set-key (kbd "M-S-<up>") (lambda () (interactive) (scroll-down 5)))
 (global-set-key (kbd "M-S-<down>") (lambda () (interactive) (scroll-up 5)))
 
+;; Convert to unix LF
+(defun unix-file ()
+  "Change the current buffer to Unix line-ends."
+  (interactive)
+  (set-buffer-file-coding-system 'unix t))
+
+;; Automatic change to unix LF
+(defun no-junk-please-were-unixish ()
+  (let ((coding-str (symbol-name buffer-file-coding-system)))
+    (when (string-match "-\\(?:dos\\|mac\\)$" coding-str)
+      (set-buffer-file-coding-system 'unix))))
+
+(add-hook 'find-file-hooks 'no-junk-please-were-unixish)
+
 ;; NeoTree
 (add-to-list 'load-path "~/.emacs.d/elpa/neotree")
 (require 'neotree)
