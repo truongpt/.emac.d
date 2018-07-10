@@ -1,6 +1,3 @@
-
-;;(load-file "~/.emacs.d/elpa/setup-cygwin.el")
-
 ;;add package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -19,8 +16,8 @@
 ;; Setting PATH ENV
 
 ;; setting theme, font
-;;(load-theme 'deeper-blue)
-(load-theme 'tango-dark)
+(load-theme 'deeper-blue)
+;;(load-theme 'tango-dark)
 
 (if (eq system-type 'windows-nt)
   (set-face-attribute 'default nil :family "Consolas" :height 110)
@@ -244,91 +241,8 @@
 
 (add-hook 'find-file-hooks 'no-junk-please-were-unixish)
 
-;; NeoTree
-(add-to-list 'load-path "~/.emacs.d/elpa/neotree")
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-(setq neo-smart-open t)
 
 ;; Auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-local")
 (require 'auto-complete)
 (setq auto-complete-mode t)
-
-;; Use counsel
-;;(require 'counsel)
-;;(ivy-mode 1)
-;;(setq ivy-use-virtual-buffers t)
-;;(setq enable-recursive-minibuffers t)
-;;(global-set-key (kbd "M-s") 'swiper)
-;;(global-set-key (kbd "C-x m") 'counsel-M-x)
-;;(global-set-key (kbd "C-c C-r") 'ivy-resume)
-;;(global-set-key (kbd "<f6>") 'ivy-resume)
-;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-;;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-;;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-;;(global-set-key (kbd "<f1> l") 'counsel-find-library)
-;;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-;;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-;;(global-set-key (kbd "C-c g") 'counsel-git)
-;;(global-set-key (kbd "C-c j") 'counsel-git-grep)
-;;(global-set-key (kbd "C-c k") 'counsel-ag)
-;;(global-set-key (kbd "C-x l") 'counsel-locate)
-;;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-;;(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-
-;;(require 'helm)
-;;(require 'helm-config)
-;; 
-;;;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;;;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;;;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
-;;(global-unset-key (kbd "C-x c"))
-;; 
-;;(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-;;(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
-;;(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-;; 
-;;(when (executable-find "curl")
-;;  (setq helm-google-suggest-use-curl-p t))
-;; 
-;;(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-;;      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-;;      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-;;      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-;;      helm-ff-file-name-history-use-recentf t
-;;      helm-echo-input-in-header-line t)
-;; 
-;;(defun spacemacs//helm-hide-minibuffer-maybe ()
-;;  "Hide minibuffer in Helm session if we use the header line as input field."
-;;  (when (with-helm-buffer helm-echo-input-in-header-line)
-;;    (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
-;;      (overlay-put ov 'window (selected-window))
-;;      (overlay-put ov 'face
-;;                   (let ((bg-color (face-background 'default nil)))
-;;                     `(:background ,bg-color :foreground ,bg-color)))
-;;      (setq-local cursor-type nil))))
-;; 
-;; 
-;;(add-hook 'helm-minibuffer-set-up-hook
-;;          'spacemacs//helm-hide-minibuffer-maybe)
-;; 
-;;(setq helm-autoresize-max-height 0)
-;;(setq helm-autoresize-min-height 20)
-;;(helm-autoresize-mode 1)
-;; 
-;;;;(helm-mode 1)
-;; 
-;;(global-set-key (kbd "M-x") 'helm-M-x)
-;;(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M
-;;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-;;(global-set-key (kbd "C-x b") 'helm-mini)
-;;(setq helm-buffers-fuzzy-matching t
-;;      helm-recentf-fuzzy-match    t)
-;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
-;;(global-set-key (kbd "M-s") 'helm-occur)
-;; 
-;;(when (executable-find "ack-grep")
-;;  (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
-;;        helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
