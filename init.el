@@ -245,4 +245,4 @@
 ;; Auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-local")
 (require 'auto-complete)
-(setq auto-complete-mode t)
+(global-auto-complete-mode t)
