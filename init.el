@@ -1,19 +1,11 @@
-;;add package
+;; Package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
 ;; Setting PATH ENV
 (setenv "PATH" (concat (getenv "PATH") ":/bin"))
-;;(setq exec-path (append exec-path '("/bin")))
-;;(setenv "PATH" "c:\\cygwin64\\bin")
 (setenv "PATH" (format "c:\\cygwin64\\bin;%s" (getenv "PATH")))
-;;(setq find-dired-find-program "c:\\cygwin64\\bin\\find.exe")
-;;(setq find-program "c:\\cygwin64\\bin\\find.exe")
-
-;;(setenv "SHELL" "/bin/bash")
-;;(setq explicit-shell-file-name "/bin/bash")
-;; Setting PATH ENV
 
 ;; setting theme, font
 (load-theme 'deeper-blue)
@@ -30,18 +22,12 @@
 
 
 ;; Change default mode
-;;(cua-mode 1)
 (which-function-mode 1)
 (recentf-mode 1)
 (delete-selection-mode 1)
-;; Display line number
-(global-linum-mode 1)
-
-;; High light line
-(global-hl-line-mode 1)
-
-;; Display paren (highlight matching brackets)
-(show-paren-mode 1)
+(global-linum-mode 1) ;;Display line number
+(global-hl-line-mode 1) ;;High light line
+(show-paren-mode 1) ;; Display paren (highlight matching brackets)
 (setq show-paren-delay 0)
 
 ;; Gtags
@@ -201,7 +187,7 @@
 (defun w32-browser (doc) (w32-shell-execute 1 doc))
 (eval-after-load "dired" '(define-key dired-mode-map "\z" (lambda () (interactive) (w32-browser (dired-replace-in-string "/" "\\" (dired-get-filename))))))
 
-;; remove tool bar
+;; Remove tool bar
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode)
