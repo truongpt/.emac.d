@@ -28,6 +28,10 @@
 (delete-selection-mode 1)
 (global-linum-mode 1) ;;Display line number
 (global-hl-line-mode 1) ;;High light line
+(set-face-background 'highlight nil)
+(set-face-foreground 'highlight nil)
+(set-face-underline-p 'highlight t)
+
 (show-paren-mode 1) ;; Display paren (highlight matching brackets)
 (setq show-paren-delay 0)
 
