@@ -16,11 +16,10 @@
 )
 
 ;; Indentation
-(setq c-default-style "linux")
+(setq-default c-default-style "linux")
 (setq-default indent-tabs-mode nil)
-(setq tab-width 8) ; or any other preferred value
+(setq-default tab-width 8) ; or any other preferred value
 (defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
 
 ;; Change default mode
 (which-function-mode 1)
