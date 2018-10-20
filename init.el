@@ -8,8 +8,9 @@
 (setenv "PATH" (format "c:\\cygwin64\\bin;%s" (getenv "PATH")))
 
 ;; setting theme, font
-(load-theme 'deeper-blue)
+;;(load-theme 'deeper-blue)
 ;;(load-theme 'tango-dark)
+(load-theme 'manoj-dark)
 
 (if (eq system-type 'windows-nt)
   (set-face-attribute 'default nil :family "Consolas" :height 110)
@@ -25,11 +26,13 @@
 (which-function-mode 1)
 (recentf-mode 1)
 (delete-selection-mode 1)
-(global-linum-mode 1) ;;Display line number
+;;(global-linum-mode 1) ;;Display line number
 (global-hl-line-mode 1) ;;High light line
 (set-face-background 'highlight nil)
 (set-face-foreground 'highlight nil)
 (set-face-underline-p 'highlight t)
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
 
 (show-paren-mode 1) ;; Display paren (highlight matching brackets)
 (setq show-paren-delay 0)
@@ -231,6 +234,10 @@
 
 (add-hook 'find-file-hooks 'no-junk-please-were-unixish)
 
+(defun my-dired-mode-setup ()
+  "show less information in dired buffers"
+  (dired-hide-details-mode 1))
+(add-hook 'dired-mode-hook 'my-dired-mode-setup)
 
 ;; Auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-local")
