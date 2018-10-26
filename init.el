@@ -28,6 +28,8 @@
 (delete-selection-mode 1)
 ;;(global-linum-mode 1) ;;Display line number
 (global-hl-line-mode 1) ;;High light line
+(global-visual-line-mode 1)
+
 (set-face-background 'highlight nil)
 (set-face-foreground 'highlight nil)
 (set-face-underline-p 'highlight t)
@@ -248,6 +250,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/neotree")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
 
 (defun remove-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
