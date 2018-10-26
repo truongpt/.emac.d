@@ -244,6 +244,11 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
+;; Neotree
+(add-to-list 'load-path "~/.emacs.d/elpa/neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
 (defun remove-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
