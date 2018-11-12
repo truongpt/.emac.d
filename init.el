@@ -51,7 +51,7 @@
 
 ;; utility
 (global-set-key "\C-h" 'dired-up-directory)
-(global-set-key "\C-z" 'grep-find)
+(global-set-key "\C-f" 'grep-find)
 (global-set-key "\C-i" 'forward-word)
 (global-set-key "\C-u" 'backward-word)
 
