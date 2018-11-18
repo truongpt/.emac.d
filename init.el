@@ -13,8 +13,13 @@
 (load-theme 'manoj-dark)
 
 (if (eq system-type 'windows-nt)
-  (set-face-attribute 'default nil :family "Consolas" :height 110)
+  (set-face-attribute 'default nil :family "Consolas" :height 130)
 )
+
+(if (eq system-type 'darwin) (eq system-type 'linux)
+  (set-face-attribute 'default nil :height 130)
+)
+
 
 ;; Indentation
 (setq-default c-default-style "linux")
@@ -63,8 +68,6 @@
 
 (global-set-key "\C-xf" 'recentf-open-files)
 (global-set-key "\C-q" 'toggle-truncate-lines)
-
-(set-face-attribute 'default nil :height 100)
 
 ;; base copy fucntion
 (defun get-point (symbol &optional arg)
