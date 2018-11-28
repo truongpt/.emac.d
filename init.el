@@ -24,7 +24,7 @@
 ;; Indentation
 (setq-default c-default-style "linux")
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 8) ; or any other preferred value
+(setq-default tab-width 4) ; or any other preferred value
 (defvaralias 'c-basic-offset 'tab-width)
 
 ;; Change default mode
@@ -261,3 +261,15 @@
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 (add-hook 'text-mode-hook 'remove-dos-eol)
+
+(defun remap-faces-default-attributes ()
+  (let ((family (face-attribute 'default :family))
+        (height (face-attribute 'default :height)))
+    (mapcar (lambda (face)
+              (face-remap-add-relative
+               face :family family :weight 'normal :height height))
+          (face-list))))
+
+(when (display-graphic-p)
+  (add-hook 'minibuffer-setup-hook 'remap-faces-default-attributes)
+  (add-hook 'change-major-mode-after-body-hook 'remap-faces-default-attributes))
