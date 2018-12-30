@@ -44,6 +44,9 @@
 (show-paren-mode 1) ;; Display paren (highlight matching brackets)
 (setq show-paren-delay 0)
 
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# files
+
 ;; Gtags
 (load-file "~/.emacs.d/elpa/gtags-el/gtags.el")
 (require 'gtags)
@@ -52,7 +55,7 @@
 (global-set-key "\M-r" 'gtags-find-rtag)
 (global-set-key "\M-s" 'gtags-find-symbol)
 (global-set-key "\C-t" 'gtags-pop-stack)
-(global-set-key "\M-z" 'gtags-find-symbol)
+(global-set-key "\M-z" 'gtags-find-with-grep)
 
 ;; utility
 (global-set-key "\C-h" 'dired-up-directory)
@@ -65,6 +68,7 @@
 (global-set-key (kbd "C-<right>") 'windmove-right)
 (global-set-key (kbd "C-<up>")    'windmove-up)
 (global-set-key (kbd "C-<down>")  'windmove-down)
+(global-set-key (kbd "C-:")  'isearch-forward-symbol-at-point)
 
 (global-set-key "\C-xf" 'recentf-open-files)
 (global-set-key "\C-q" 'toggle-truncate-lines)
