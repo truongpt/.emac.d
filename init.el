@@ -280,3 +280,17 @@
 
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
+
+(mapc (lambda (elt)
+        (define-key dired-mode-map (car elt)
+          `(lambda ()
+            (interactive)
+            (dired-sort-other (concat dired-listing-switches ,(cadr elt))))))
+      '(([(control f3)]       ""     "by name")
+        ([(control f4)]       " -X"  "by extension")
+        ([(control f5)]       " -t"  "by date")
+        ([(control f6)]       " -S"  "by size")
+        ([(control shift f3)] " -r"  "by reverse name")
+        ([(control shift f4)] " -rX" "by reverse extension")
+        ([(control shift f5)] " -rt" "by reverse date")
+        ([(control shift f6)] " -rS" "by reverse size")))
