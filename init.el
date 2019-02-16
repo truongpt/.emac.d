@@ -17,7 +17,7 @@
 )
 
 (if (eq system-type 'darwin) (eq system-type 'linux)
-  (set-face-attribute 'default nil :height 130)
+  (set-face-attribute 'default nil :height 115)
 )
 
 
@@ -84,21 +84,21 @@
   "copy thing between beg & end into kill ring"
   (save-excursion
     (let ((beg (get-point begin-of-thing 1))
-	  (end (get-point end-of-thing arg)))
+      (end (get-point end-of-thing arg)))
       (copy-region-as-kill beg end)))
   )
 
 (defun paste-to-mark(&optional arg)
   "Paste things to mark, or to the prompt in shell-mode"
   (let ((pasteMe 
-     	 (lambda()
-     	   (if (string= "shell-mode" major-mode)
-	       (progn (comint-next-prompt 25535) (yank))
-	     (progn (goto-char (mark)) (yank) )))))
+         (lambda()
+           (if (string= "shell-mode" major-mode)
+           (progn (comint-next-prompt 25535) (yank))
+         (progn (goto-char (mark)) (yank) )))))
     (if arg
-	(if (= arg 1)
-	    nil
-	  (funcall pasteMe))
+    (if (= arg 1)
+        nil
+      (funcall pasteMe))
       (funcall pasteMe))
     ))
 
@@ -201,7 +201,8 @@
 
 ;;open file/folder from dired mode
 (defun w32-browser (doc) (w32-shell-execute 1 doc))
-(eval-after-load "dired" '(define-key dired-mode-map "\z" (lambda () (interactive) (w32-browser (dired-replace-in-string "/" "\\" (dired-get-filename))))))
+(eval-after-load "dired"
+  '(define-key dired-mode-map "\z" (lambda () (interactive) (w32-browser (dired-replace-in-string "/" "\\" (dired-get-filename))))))
 
 ;; Remove tool bar
 (when (fboundp 'tool-bar-mode)
@@ -236,12 +237,12 @@
   (set-buffer-file-coding-system 'unix t))
 
 ;; Automatic change to unix LF
-(defun no-junk-please-were-unixish ()
-  (let ((coding-str (symbol-name buffer-file-coding-system)))
-    (when (string-match "-\\(?:dos\\|mac\\)$" coding-str)
-      (set-buffer-file-coding-system 'unix))))
-
-(add-hook 'find-file-hooks 'no-junk-please-were-unixish)
+;;(defun no-junk-please-were-unixish ()
+;;  (let ((coding-str (symbol-name buffer-file-coding-system)))
+;;    (when (string-match "-\\(?:dos\\|mac\\)$" coding-str)
+;;      (set-buffer-file-coding-system 'unix))))
+;;
+;;(add-hook 'find-file-hooks 'no-junk-please-were-unixish)
 
 (defun my-dired-mode-setup ()
   "show less information in dired buffers"
@@ -281,16 +282,27 @@
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 
-(mapc (lambda (elt)
-        (define-key dired-mode-map (car elt)
-          `(lambda ()
-            (interactive)
-            (dired-sort-other (concat dired-listing-switches ,(cadr elt))))))
-      '(([(control f3)]       ""     "by name")
-        ([(control f4)]       " -X"  "by extension")
-        ([(control f5)]       " -t"  "by date")
-        ([(control f6)]       " -S"  "by size")
-        ([(control shift f3)] " -r"  "by reverse name")
-        ([(control shift f4)] " -rX" "by reverse extension")
-        ([(control shift f5)] " -rt" "by reverse date")
-        ([(control shift f6)] " -rS" "by reverse size")))
+(defface extra-whitespace-face
+  '((t (:background "pale green")))
+  "Used for tabs and such.")
+
+(defvar my-extra-keywords
+  '(("\t" . 'extra-whitespace-face)))
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+
+(add-hook 'text-mode-hook
+          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+
+;; Draw tabs with the same color as trailing whitespace
+(add-hook 'font-lock-mode-hook
+          (lambda ()
+            (font-lock-add-keywords
+             nil
+             '(("\t" 0 'trailing-whitespace prepend)))))
+
+;; QT qml reading mode
+(load-file "~/.emacs.d/elpa/qml-mode.el")
+(require 'qml-mode)
+
