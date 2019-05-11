@@ -69,6 +69,7 @@
 (global-set-key (kbd "C-<up>")    'windmove-up)
 (global-set-key (kbd "C-<down>")  'windmove-down)
 (global-set-key (kbd "C-:")  'isearch-forward-symbol-at-point)
+(global-set-key (kbd "C-j")  'isearch-forward-symbol-at-point)
 
 (global-set-key "\C-xf" 'recentf-open-files)
 (global-set-key "\C-q" 'toggle-truncate-lines)
@@ -274,10 +275,6 @@
               (face-remap-add-relative
                face :family family :weight 'normal :height height))
           (face-list))))
-
-(when (display-graphic-p)
-  (add-hook 'minibuffer-setup-hook 'remap-faces-default-attributes)
-  (add-hook 'change-major-mode-after-body-hook 'remap-faces-default-attributes))
 
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
