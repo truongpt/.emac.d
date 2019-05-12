@@ -303,3 +303,7 @@
 (load-file "~/.emacs.d/elpa/qml-mode.el")
 (require 'qml-mode)
 
+;; load highlight indentation
+(load-file "~/.emacs.d/elpa/highlight-indentation.el")
+(require 'highlight-indentation)
+(highlight-indentation-mode t)
